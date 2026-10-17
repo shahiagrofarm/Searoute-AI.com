@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#06182c">
+  <meta name="description" content="SeaRoute AI — maritime route planning, safety, fleet awareness and carbon insights.">
+  <title>SeaRoute AI — Maritime Intelligence</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home" aria-label="SeaRoute AI home">
+        <img src="assets/searoute-logo.jpg" alt="" class="brand-logo" onerror="this.style.display='none'">
+        <span class="brand-mark">≈</span>
+        <span><strong>SeaRoute <em>AI</em></strong><small data-i18n="brandSub">Green Maritime Intelligence</small></span>
+      </a>
+      <div class="side-label" data-i18n="workspace">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-page="home"><span>⌂</span><b data-i18n="navHome">Overview</b></button>
+        <button class="nav-item" data-page="planner"><span>⌁</span><b data-i18n="navPlanner">Route Planner</b></button>
+        <button class="nav-item" data-page="fleet"><span>◎</span><b data-i18n="navFleet">Fleet Map</b></button>
+        <button class="nav-item" data-page="carbon"><span>♧</span><b data-i18n="navCarbon">Carbon CII</b></button>
+        <button class="nav-item" data-page="safety"><span>⬡</span><b data-i18n="navSafety">Safety & Ethics</b></button>
+        <button class="nav-item" data-page="copilot"><span>✧</span><b data-i18n="navCopilot">AI Co-Pilot</b></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="status-card"><span class="status-dot"></span><div><strong data-i18n="demoMode">Demo workspace</strong><small data-i18n="demoNote">Live marine data not connected</small></div></div>
+        <button id="languageBtn" class="language-btn">বাংলা / EN</button>
+        <p class="sidebar-foot">SEAROUTE AI · WEB EDITION</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="breadcrumb"><span data-i18n="workspace">WORKSPACE</span><span>/</span><strong id="currentTitle">Overview</strong></div>
+        <div class="top-actions">
+          <span class="data-pill"><span class="status-dot amber"></span><span data-i18n="dataUnavailable">Live data unavailable</span></span>
+          <button class="icon-btn" id="themeBtn" aria-label="Toggle display mode">☾</button>
+          <div class="avatar">SR</div>
+        </div>
+      </header>
+
+      <section class="page active" id="page-home">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="heroEyebrow">MARITIME DECISION SUPPORT</span></div>
+            <h1 data-i18n="heroTitle">Navigate smarter.<br><span>Return safer.</span></h1>
+            <p data-i18n="heroText">A unified workspace for voyage planning, operational safety and environmental awareness.</p>
+            <div class="hero-actions"><button class="btn primary" data-goto="planner" data-i18n="planVoyage">＋ Plan a voyage</button><button class="btn secondary" data-goto="safety" data-i18n="safetyReview">Review safety</button></div>
+          </div>
+          <div class="hero-art" role="img" aria-label="Ocean and maritime route illustration">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="route-line"></div><div class="map-pin pin-a">A</div><div class="map-pin pin-b">B</div>
+            <div class="ship-icon">⛴</div><div class="art-caption"><span class="status-dot"></span><span data-i18n="routeVisual">Route visualization · Demo</span></div>
+          </div>
+        </div>
+
+        <div class="section-heading"><div><div class="eyebrow" data-i18n="atAGlance">AT A GLANCE</div><h2 data-i18n="overviewTitle">Operational overview</h2></div><span class="muted" data-i18n="sampleWorkspace">Sample workspace · Not live data</span></div>
+        <div class="metric-grid">
+          <article class="metric-card"><div class="metric-top"><span data-i18n="plannedVoyages">Planned voyages</span><span class="metric-icon blue">⌁</span></div><strong id="voyageCount">0</strong><small data-i18n="savedOnDevice">Saved on this device</small></article>
+          <article class="metric-card"><div class="metric-top"><span data-i18n="checklistProgress">Safety checklist</span><span class="metric-icon teal">⬡</span></div><strong id="checkProgress">0%</strong><small data-i18n="checklistComplete">Checklist completion</small><div class="progress"><i id="checkBar"></i></div></article>
+          <article class="metric-card"><div class="metric-top"><span data-i18n="distancePlanned">Distance planned</span><span class="metric-icon purple">↗</span></div><strong id="distanceTotal">—</strong><small data-i18n="demoEstimate">Demo estimates only</small></article>
+          <article class="metric-card"><div class="metric-top"><span data-i18n="carbonEstimate">CO₂ estimate</span><span class="metric-icon green">♧</span></div><strong id="carbonTotal">—</strong><small data-i18n="basedOnInputs">Based on your inputs</small></article>
+        </div>
+
+        <div class="content-grid">
+          <article class="panel">
+            <div class="panel-head"><div><h3 data-i18n="safetySnapshot">Safety snapshot</h3><p data-i18n="safetySnapshotText">Confirm conditions from official sources before departure.</p></div><span class="pill warning" data-i18n="needsReview">Needs review</span></div>
+            <div class="notice"><span class="notice-icon">!</span><div><strong data-i18n="noLiveWarnings">No live warnings connected</strong><p data-i18n="noLiveWarningsText">This website cannot currently retrieve official marine warnings. Check your local maritime authority before sailing.</p></div></div>
+            <button class="text-btn" data-goto="safety" data-i18n="openSafety">Open safety center →</button>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><div><h3 data-i18n="quickActions">Quick actions</h3><p data-i18n="quickActionsText">Jump into your daily workflow.</p></div></div>
+            <div class="quick-list">
+              <button data-goto="planner"><span class="quick-icon">⌁</span><span><strong data-i18n="newVoyage">Create voyage plan</strong><small data-i18n="newVoyageSub">Estimate distance and fuel</small></span><span class="arrow">↗</span></button>
+              <button data-goto="safety"><span class="quick-icon teal">⬡</span><span><strong data-i18n="runChecklist">Run safety checklist</strong><small data-i18n="runChecklistSub">Review essential equipment</small></span><span class="arrow">↗</span></button>
+              <button data-goto="copilot"><span class="quick-icon purple">✧</span><span><strong data-i18n="askCopilot">Ask AI co-pilot</strong><small data-i18n="askCopilotSub">Get general maritime guidance</small></span><span class="arrow">↗</span></button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="page-planner">
+        <div class="page-intro"><div class="eyebrow" data-i18n="voyageManagement">VOYAGE MANAGEMENT</div><h1 data-i18n="plannerTitle">Route Planner</h1><p data-i18n="plannerIntro">Build a planning estimate from your route inputs. This is not a certified navigation system.</p></div>
+        <div class="content-grid planner-grid">
+          <article class="panel">
+            <div class="panel-head"><div><h3 data-i18n="routeInputs">Route inputs</h3><p data-i18n="routeInputsText">Enter your intended voyage details.</p></div></div>
+            <form id="plannerForm" class="form-grid">
+              <label><span data-i18n="origin">Departure port / location</span><input id="origin" required placeholder="e.g. Chattogram"></label>
+              <label><span data-i18n="destination">Destination</span><input id="destination" required placeholder="e.g. Cox's Bazar"></label>
+              <label><span data-i18n="distance">Estimated distance (nautical miles)</span><input id="distance" type="number" min="0.1" step="0.1" required value="35"></label>
+              <label><span data-i18n="speed">Average speed (knots)</span><input id="speed" type="number" min="0.1" step="0.1" required value="8"></label>
+              <label><span data-i18n="fuelRate">Fuel consumption (litres/hour)</span><input id="fuelRate" type="number" min="0" step="0.1" value="12" required></label>
+              <label><span data-i18n="fuelPrice">Fuel price per litre</span><input id="fuelPrice" type="number" min="0" step="0.01" value="1" required></label>
+              <label class="full"><span data-i18n="departureTime">Planned departure</span><input id="departureTime" type="datetime-local"></label>
+              <button class="btn primary full" type="submit" data-i18n="calculateSave">Calculate & save plan</button>
+            </form>
+          </article>
+          <article class="panel results-panel">
+            <div class="panel-head"><div><h3 data-i18n="voyageEstimate">Voyage estimate</h3><p data-i18n="estimateDisclaimer">Calculated only from your inputs.</p></div><span class="pill neutral" data-i18n="estimateOnly">Estimate</span></div>
+            <div class="result-hero"><small data-i18n="estimatedDuration">Estimated underway time</small><strong id="durationResult">—</strong><span id="routeLabel">Enter route details</span></div>
+            <div class="result-row"><span data-i18n="fuelRequired">Estimated fuel required</span><strong id="fuelResult">—</strong></div>
+            <div class="result-row"><span data-i18n="fuelCost">Estimated fuel cost</span><strong id="costResult">—</strong></div>
+            <div class="result-row"><span data-i18n="returnReminder">Return-time reminder</span><strong id="returnResult">—</strong></div>
+            <p class="fine-print" data-i18n="plannerWarning">Does not account for currents, weather, restricted waters, vessel performance, or route hazards. Verify all navigation decisions independently.</p>
+          </article>
+        </div>
+        <article class="panel saved-panel"><div class="panel-head"><div><h3 data-i18n="savedVoyages">Saved voyage plans</h3><p data-i18n="savedVoyagesText">Stored locally in this browser.</p></div></div><div id="voyageList" class="saved-list empty-state" data-i18n="noVoyages">No saved plans yet.</div></article>
+      </section>
+
+      <section class="page" id="page-fleet">
+        <div class="page-intro"><div class="eyebrow" data-i18n="situationalAwareness">SITUATIONAL AWARENESS</div><h1 data-i18n="fleetTitle">Fleet Map</h1><p data-i18n="fleetIntro">A visual workspace for route concepts. No vessel tracking or live GPS is connected.</p></div>
+        <div class="content-grid fleet-grid">
+          <article class="panel map-panel"><div class="panel-head"><div><h3 data-i18n="routeCanvas">Route canvas</h3><p data-i18n="routeCanvasText">Illustrative map — not for navigation.</p></div><span class="pill warning" data-i18n="demoMap">Demo map</span></div>
+            <div class="sea-map"><div class="map-grid"></div><svg viewBox="0 0 800 420" class="map-svg" role="img" aria-label="Illustrative maritime route"><path class="coast" d="M0 0 L210 0 Q190 40 225 70 T210 145 Q170 190 205 235 T190 300 Q150 360 170 420 L0 420Z"/><path class="route" d="M270 300 C360 270 350 200 455 205 S585 135 670 90"/><circle cx="270" cy="300" r="9" class="map-point"/><circle cx="670" cy="90" r="9" class="map-point end"/></svg><span class="map-label start-label">PORT A · DEMO</span><span class="map-label end-label">PORT B · DEMO</span><div class="map-watermark">ILLUSTRATIVE ONLY</div></div>
+            <div class="map-legend"><span><i class="legend-dot blue-dot"></i><span data-i18n="plannedRoute">Illustrative route</span></span><span><i class="legend-dot grey-dot"></i><span data-i18n="noLiveVessels">No live vessels</span></span></div>
+          </article>
+          <article class="panel"><div class="panel-head"><div><h3 data-i18n="fleetStatus">Fleet status</h3><p data-i18n="fleetStatusText">No connected fleet feed.</p></div></div><div class="empty-state large"><span class="empty-symbol">◎</span><strong data-i18n="noFleetData">No live fleet data</strong><p data-i18n="noFleetDataText">Connect a trusted tracking provider and obtain the required permissions to display vessel positions.</p></div><div class="notice compact"><span class="notice-icon">i</span><p data-i18n="privacyNotice">Do not publish private vessel locations without consent.</p></div></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-carbon">
+        <div class="page-intro"><div class="eyebrow" data-i18n="environmentalInsights">ENVIRONMENTAL INSIGHTS</div><h1 data-i18n="carbonTitle">Carbon & CII Estimator</h1><p data-i18n="carbonIntro">Estimate fuel-based CO₂ emissions using your own voyage inputs. This is not an official IMO CII rating.</p></div>
+        <div class="content-grid">
+          <article class="panel"><div class="panel-head"><div><h3 data-i18n="emissionInputs">Emission inputs</h3><p data-i18n="emissionInputsText">Use verified vessel and fuel data where possible.</p></div></div>
+            <form id="carbonForm" class="form-grid">
+              <label><span data-i18n="fuelBurned">Fuel burned (tonnes)</span><input id="carbonFuel" type="number" min="0" step="0.01" value="1.2" required></label>
+              <label><span data-i18n="emissionFactor">CO₂ factor (tonnes CO₂ / tonne fuel)</span><input id="emissionFactor" type="number" min="0" step="0.01" value="3.114" required></label>
+              <label><span data-i18n="cargoDistance">Cargo × distance (tonne-nautical miles)</span><input id="cargoDistance" type="number" min="0" step="1" value="10000" required></label>
+              <button class="btn primary full" type="submit" data-i18n="calculateEmissions">Calculate estimate</button>
+            </form>
+          </article>
+          <article class="panel"><div class="panel-head"><div><h3 data-i18n="carbonResults">Estimate results</h3><p data-i18n="carbonResultsText">Derived from entered values.</p></div></div><div class="carbon-result"><span data-i18n="estimatedEmissions">Estimated CO₂ emissions</span><strong id="co2Result">3.74 t</strong><small data-i18n="notVerified">Not independently verified</small></div><div class="result-row"><span data-i18n="intensity">Illustrative carbon intensity</span><strong id="intensityResult">0.374 g/t-nm</strong></div><p class="fine-print" data-i18n="ciiNote">Official Carbon Intensity Indicator calculations require vessel-specific data and applicable regulatory methods. This simple estimator must not be represented as a compliance result.</p></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-safety">
+        <div class="page-intro"><div class="eyebrow" data-i18n="safetyCenter">SAFETY CENTER</div><h1 data-i18n="safetyTitle">Safety & Ethics</h1><p data-i18n="safetyIntro">A practical pre-departure checklist and transparent safety reminders.</p></div>
+        <div class="notice wide"><span class="notice-icon">!</span><div><strong data-i18n="officialWarningTitle">Check official marine warnings</strong><p data-i18n="officialWarningText">No official live warning feed is configured in this version. Consult the relevant meteorological and maritime authorities before departure.</p></div></div>
+        <div class="content-grid">
+          <article class="panel"><div class="panel-head"><div><h3 data-i18n="preDeparture">Pre-departure checklist</h3><p data-i18n="preDepartureText">Progress is saved in this browser.</p></div><span class="pill neutral" id="checkPill">0 / 8</span></div><div id="checklist" class="checklist">
+            <label class="check-item"><input type="checkbox" data-check="life"><span class="fake-check"></span><span><strong data-i18n="lifeJackets">Life jackets / flotation devices</strong><small data-i18n="lifeJacketsSub">Suitable equipment available for all crew.</small></span></label>
+            <label class="check-item"><input type="checkbox" data-check="comms"><span class="fake-check"></span><span><strong data-i18n="communications">Communication equipment</strong><small data-i18n="communicationsSub">Radio or phone charged and working.</small></span></label>
+            <label class="check-item"><input type="checkbox" data-check="weather"><span class="fake-check"></span><span><strong data-i18n="weatherCheck">Official forecast and warnings checked</strong><small data-i18n="weatherCheckSub">Verify current information from official sources.</small></span></label>
+            <label class="check-item"><input type="checkbox" data-check="fuel"><span class="fake-check"></span><span><strong data-i18n="fuelCheck">Fuel and engine checks</strong><small data-i18n="fuelCheckSub">Fuel reserve and engine condition reviewed.</small></span></label>
+            <label class="check-item"><input type="checkbox" data-check="firstaid"><span class="fake-check"></span><span><strong data-i18n="firstAid">First-aid kit</strong><small data-i18n="firstAidSub">Supplies available and accessible.</small></span></label>
+            <label class="check-item"><input type="checkbox" data-check="water"><span class="fake-check"></span><span><strong data-i18n="water">Water and essential supplies</strong><small data-i18n="waterSub">Enough for the expected trip and contingency.</small></span></label>
+            <label class="check-item"><input type="checkbox" data-check="crew"><span class="fake-check"></span><span><strong data-i18n="crewPlan">Crew count and check-in plan</strong><small data-i18n="crewPlanSub">A trusted contact knows the expected return.</small></span></label>
+            <label class="check-item"><input type="checkbox" data-check="emergency"><span class="fake-check"></span><span><strong data-i18n="emergencyKit">Emergency equipment reviewed</strong><small data-i18n="emergencyKitSub">Suitable distress and emergency equipment checked.</small></span></label>
+          </div><div class="check-footer"><div class="progress"><i id="safetyBar"></i></div><button class="text-btn" id="resetChecklist" data-i18n="resetChecklist">Reset checklist</button></div></article>
+          <article class="panel"><div class="panel-head"><div><h3 data-i18n="safetyPrinciples">Safety principles</h3><p data-i18n="safetyPrinciplesText">Use as reminders, not a substitute for training.</p></div></div><div class="principle-list"><div><span class="principle-num">01</span><span><strong data-i18n="verifyConditions">Verify conditions</strong><p data-i18n="verifyConditionsText">Check current official warnings and local advice.</p></span></div><div><span class="principle-num">02</span><span><strong data-i18n="sharePlan">Share your plan</strong><p data-i18n="sharePlanText">Tell a trusted person your route and expected return.</p></span></div><div><span class="principle-num">03</span><span><strong data-i18n="respectLimits">Respect vessel limits</strong><p data-i18n="respectLimitsText">Do not rely on a software estimate to override safety judgment.</p></span></div><div><span class="principle-num">04</span><span><strong data-i18n="protectPrivacy">Protect privacy</strong><p data-i18n="protectPrivacyText">Share crew and vessel details only when necessary and with consent.</p></span></div></div><div class="notice compact"><span class="notice-icon">i</span><p data-i18n="safetyDisclaimer">This app does not dispatch rescue services or guarantee safe passage.</p></div></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-copilot">
+        <div class="page-intro"><div class="eyebrow" data-i18n="intelligentSupport">INTELLIGENT SUPPORT</div><h1 data-i18n="copilotTitle">AI Maritime Co-Pilot</h1><p data-i18n="copilotIntro">Ask for general maritime safety guidance. This static GitHub Pages edition uses a local guidance helper unless you configure a secure AI backend.</p></div>
+        <div class="copilot-layout">
+          <article class="panel chat-panel"><div class="chat-head"><div class="copilot-avatar">✧</div><div><h3>SeaRoute <em>AI</em></h3><p><span class="status-dot amber"></span><span data-i18n="localGuidance">Local guidance mode · Not connected to Gemini</span></p></div><span class="pill neutral" data-i18n="assistant">Assistant</span></div>
+            <div id="chatMessages" class="chat-messages" aria-live="polite"><div class="message assistant"><span class="message-avatar">✧</span><div class="bubble"><strong data-i18n="welcomeCopilot">Welcome aboard.</strong><p data-i18n="welcomeCopilotText">Ask about pre-departure checks, trip planning, fuel estimates, or general maritime safety. I cannot verify live marine conditions in this version.</p></div></div></div>
+            <div class="suggestions"><button data-question="What should I check before departure? " data-i18n="suggestChecklist">Pre-departure checklist</button><button data-question="How should I prepare for rough weather?" data-i18n="suggestWeather">Rough weather preparation</button><button data-question="What information belongs in a trip plan?" data-i18n="suggestTrip">Trip planning basics</button></div>
+            <form id="chatForm" class="chat-form"><input id="chatInput" autocomplete="off" placeholder="Ask a maritime safety question…" aria-label="Ask the assistant"><button class="send-btn" type="submit" aria-label="Send message">➤</button></form><p class="fine-print chat-disclaimer" data-i18n="aiDisclaimer">General guidance only. For emergencies, contact verified local emergency services. Do not use this assistant as a live warning source.</p>
+          </article>
+          <aside class="panel copilot-aside"><h3 data-i18n="whatICanHelp">What I can help with</h3><div class="capability"><span>✓</span><div><strong data-i18n="capSafety">Safety preparation</strong><p data-i18n="capSafetyText">Equipment and pre-trip checks.</p></div></div><div class="capability"><span>✓</span><div><strong data-i18n="capPlanning">Trip planning</strong><p data-i18n="capPlanningText">Route inputs and planning estimates.</p></div></div><div class="capability"><span>✓</span><div><strong data-i18n="capFuel">Fuel and carbon</strong><p data-i18n="capFuelText">Understand the app's simple calculations.</p></div></div><div class="capability unavailable"><span>×</span><div><strong data-i18n="capLive">Live marine intelligence</strong><p data-i18n="capLiveText">Unavailable until verified data and a secure AI backend are connected.</p></div></div><div class="backend-note"><strong data-i18n="connectGemini">Want real Gemini AI?</strong><p data-i18n="connectGeminiText">Use a backend function or server-side endpoint. Never put a secret API key in this public website's JavaScript.</p></div></aside>
+        </div>
+      </section>
+
+      <footer class="footer"><span>© <span id="year"></span> SeaRoute AI</span><span data-i18n="footerNote">Planning support only · Not a certified navigation or emergency service</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
